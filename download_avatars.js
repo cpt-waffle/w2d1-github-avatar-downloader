@@ -12,15 +12,16 @@ function getRepoContributors(repoOwner, repoName, cb) {
   };
 
 
-  request.get(options)
-          .on("error", function(error) {
-            throw error;
-          })
-          .on("response", function(response) {
-            console.log("Response status: " + response.statusCode);
-          });
+  //the way to do with .get the output of request is outstream which is body
+  // but we are not working with any files so doing it this way where entire body that was send out
+  //is in a variable
+  request(options, function(error, response, body) {
+    if (error)
+      throw error;
 
-  console.log("Welcome to GitHub Avatar Downloader");
+    //parsed working with json
+    console.log(JSON.parse(body));
+  });
 }
 
 
