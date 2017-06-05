@@ -4,6 +4,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
   var GITHUB_USER = 'waff1e';
   var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
+  console.log
   var options = {
     url: requestURL,
     headers: {
@@ -27,10 +28,30 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 
+function downloadImageByURL(url, filePath) {
+
+  var request = require("request");
+  var fs = require("fs");
+
+  request.get(url)
+  .on("error", function(err) {
+    throw err;
+  }).pipe(fs.createWriteStream(filePath));
+
+}
+
+downloadImageByURL("https://avatars3.githubusercontent.com/u/1615?v=3", "avatars/kvirani.jpg")
+
+
+//https://avatars2.githubusercontent.com/u/81942?v=3
+
+
+
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  for (let i = 0; i < result.length-1; i++)
-  {
+  for (let i = 0; i < result.length-1; i++) {
     console.log(result[i].avatar_url);
   }
 });
+
+
