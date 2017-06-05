@@ -20,13 +20,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
     //parsed working with json
     var objects = JSON.parse(body);
-
-    //loop through this array of objects taht i parsed
-    //get the avatar_url and then print it
-    for (let i = 0;  i < objects.length-1; i++) {
-      console.log(objects[i].avatar_url);
-    }
-
+    cb(error,objects);
 
 
   });
@@ -35,5 +29,8 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  console.log("Result:", result);
+  for (let i = 0; i < result.length-1; i++)
+  {
+    console.log(result[i].avatar_url);
+  }
 });
