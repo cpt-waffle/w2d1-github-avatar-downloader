@@ -45,11 +45,20 @@ function downloadImageByURL(url, filePath) {
 
 
 //main
-getRepoContributors("jquery", "jquery", function(err, result) {
-  console.log("Errors:", err);
-  for (let i = 0; i < result.length-1; i++) {
-    downloadImageByURL(result[i].avatar_url, 'avatars/' + result[i].login + '.jpg');
-  }
-});
+let arg1 = process.argv[2];
+let arg2 = process.argv[3];
+if (arg1 && arg2) {
+
+  getRepoContributors(arg1, arg2, function(err, result) {
+    //console.log("Errors:", err);
+    for (let i = 0; i < result.length-1; i++) {
+      downloadImageByURL(result[i].avatar_url, 'avatars/' + result[i].login + '.jpeg');
+    }
+  });
+} else {
+  console.log("Enter the comand in the following order");
+  console.log("node download_avatars.js {repoOwner} {repoName}");
+  return -1;
+}
 
 
