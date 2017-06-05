@@ -17,7 +17,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
             throw error;
           })
           .on("response", function(response) {
-            console.log("Response status: " + respose.statusCode);
+            console.log("Response status: " + response.statusCode);
           });
 
   console.log("Welcome to GitHub Avatar Downloader");
