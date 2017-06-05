@@ -11,7 +11,6 @@ function getRepoContributors(repoOwner, repoName, cb) {
     }
   };
 
-
   //the way to do with .get the output of request is outstream which is body
   // but we are not working with any files so doing it this way where entire body that was send out
   //is in a variable
@@ -20,7 +19,16 @@ function getRepoContributors(repoOwner, repoName, cb) {
       throw error;
 
     //parsed working with json
-    console.log(JSON.parse(body));
+    var objects = JSON.parse(body);
+
+    //loop through this array of objects taht i parsed
+    //get the avatar_url and then print it
+    for (let i = 0;  i < objects.length-1; i++) {
+      console.log(objects[i].avatar_url);
+    }
+
+
+
   });
 }
 
