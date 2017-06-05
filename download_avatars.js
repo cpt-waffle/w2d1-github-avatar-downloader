@@ -40,17 +40,15 @@ function downloadImageByURL(url, filePath) {
 
 }
 
-downloadImageByURL("https://avatars3.githubusercontent.com/u/1615?v=3", "avatars/kvirani.jpg")
-
-
+//downloadImageByURL("https://avatars3.githubusercontent.com/u/1615?v=3", "avatars/kvirani.jpg")W
 //https://avatars2.githubusercontent.com/u/81942?v=3
 
 
-
+//main
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
   for (let i = 0; i < result.length-1; i++) {
-    console.log(result[i].avatar_url);
+    downloadImageByURL(result[i].avatar_url, 'avatars/' + result[i].login + '.jpg');
   }
 });
 
