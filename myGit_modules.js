@@ -1,8 +1,8 @@
+//Modular design
 function getRepoContributors(repoOwner, repoName, cb) {
   var request = require("request");
-  var GITHUB_TOKEN = '8548dbb8652a4ab3d1538e602d887a4c51f02167';
-  var GITHUB_USER = 'waff1e';
-  var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
+  require('dotenv').config()
+  var requestURL = 'https://'+ process.env.GITHUB_USER + ':' + process.env.GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
   console.log
   var options = {
